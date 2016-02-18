@@ -8,6 +8,7 @@ namespace PartyMate.Web
     {
         public void Configuration(IAppBuilder app)
         {
+            DatabaseConfig.Initialize();
             ConfigureAuth(app);
         }
     }
