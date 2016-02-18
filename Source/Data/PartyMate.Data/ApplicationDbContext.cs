@@ -17,9 +17,23 @@
         {
         }
 
-        //public IDbSet<Joke> Jokes { get; set; }
+        public IDbSet<Club> Clubs { get; set; }
 
-        //public IDbSet<JokeCategory> JokesCategories { get; set; }
+        public IDbSet<ClubReview> ClubReviews { get; set; }
+
+        public IDbSet<Event> Events { get; set; }
+
+        public IDbSet<EventComment> EventComments { get; set; }
+
+        public IDbSet<EventLike> EventLike { get; set; }
+
+        public IDbSet<EventDisLike> EventDisLikes { get; set; }
+
+        public IDbSet<Image> Images { get; set; }
+
+        public IDbSet<Location> Locations { get; set; }
+
+        public override IDbSet<User> Users { get; set; }
 
         public static ApplicationDbContext Create()
         {
