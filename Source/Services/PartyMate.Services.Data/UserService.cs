@@ -1,6 +1,5 @@
 ﻿namespace PartyMate.Services.Data
 {
-    using System;
     using System.Linq;
 
     using Interfaces;
@@ -28,7 +27,13 @@
 
         public IQueryable<User> GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            return this.users.All().Where(u => u.UserName == userName);
+        }
+
+        public void Add(User user)
+        {
+            this.users.Add(user);
+            this.users.Save();
         }
     }
 }

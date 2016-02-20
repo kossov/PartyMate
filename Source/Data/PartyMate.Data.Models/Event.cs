@@ -8,14 +8,14 @@
 
     public class Event : BaseModel<int>
     {
-        private ICollection<Image> images;
+        private ICollection<Image> photos;
         private ICollection<EventComment> comments;
         private ICollection<EventLike> likes;
         private ICollection<EventDisLike> dislikes;
 
         public Event()
         {
-            this.images = new HashSet<Image>();
+            this.photos = new HashSet<Image>();
             this.comments = new HashSet<EventComment>();
             this.likes = new HashSet<EventLike>();
             this.dislikes = new HashSet<EventDisLike>();
@@ -32,10 +32,14 @@
 
         public double EntranceFee { get; set; }
 
-        public virtual ICollection<Image> Images
+        public int EventImageId { get; set; }
+
+        public virtual Image EventImage { get; set; }
+
+        public virtual ICollection<Image> Photos
         {
-            get { return this.images; }
-            set { this.images = value; }
+            get { return this.photos; }
+            set { this.photos = value; }
         }
 
         public virtual ICollection<EventComment> Comments

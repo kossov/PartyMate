@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace PartyMate.Web.Models
+﻿namespace PartyMate.Web.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using PartyMate.Common;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -64,6 +66,16 @@ namespace PartyMate.Web.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [MinLength(ModelConstants.UserFirstNameMinLength)]
+        [MaxLength(ModelConstants.UserFirstNameMaxLength)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MinLength(ModelConstants.UserLastNameMinLength)]
+        [MaxLength(ModelConstants.UserLastNameMaxLength)]
+        public string LastName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -6,13 +6,13 @@
 
     public class Club : BaseModel<int>
     {
-        private ICollection<Image> images;
+        private ICollection<Image> photos;
         private ICollection<Event> events;
         private ICollection<ClubReview> reviews;
 
         public Club()
         {
-            this.images = new HashSet<Image>();
+            this.photos = new HashSet<Image>();
             this.events = new HashSet<Event>();
             this.reviews = new HashSet<ClubReview>();
         }
@@ -41,10 +41,10 @@
 
         public virtual User Moderator { get; set; }
 
-        public virtual ICollection<Image> Images
+        public virtual ICollection<Image> Photos
         {
-            get { return this.images; }
-            set { this.images = value; }
+            get { return this.photos; }
+            set { this.photos = value; }
         }
 
         public virtual ICollection<Event> Events

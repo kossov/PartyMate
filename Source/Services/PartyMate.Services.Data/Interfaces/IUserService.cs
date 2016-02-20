@@ -11,5 +11,7 @@
         User GetById(string id);
 
         IQueryable<User> GetByUserName(string userName);
+
+        void Add(User user);
     }
 }
