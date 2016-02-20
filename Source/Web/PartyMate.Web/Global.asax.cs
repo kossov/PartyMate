@@ -1,5 +1,7 @@
 ﻿namespace PartyMate.Web
 {
+    using System.Data.Entity;
+
     using System.Reflection;
 
     using System.Web.Http;
@@ -18,7 +20,7 @@
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
             AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

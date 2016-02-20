@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.nav-buttons-custom {
+    cursor: pointer;
+}

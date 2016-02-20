@@ -30,13 +30,13 @@
                     @if (this.User.Identity.IsAuthenticated)
                     {
                         <li class="dropdown">
-                            <a runat="server" data-toggle="dropdown" class="nav-buttons-clickable-anchor"><span class="glyphicon glyphicon-list-alt" /> Clubs <span class="caret" /></a>
+                            <a runat="server" data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-list-alt" /> Clubs <span class="caret" /></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Upcomming", "UpcommingTrips", "Trip")</li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a runat="server" data-toggle="dropdown" class="nav-buttons-clickable-anchor"><span class="glyphicon glyphicon-list-alt" /> Events <span class="caret" /></a>
+                            <a runat="server" data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-list-alt" /> Events <span class="caret" /></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Upcomming", "UpcommingTrips", "Trip")</li>
                             </ul>
