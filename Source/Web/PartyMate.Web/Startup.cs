@@ -1,6 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
+using PartyMate.Web.Infrastructure.Mapping;
+
 [assembly: OwinStartupAttribute(typeof(PartyMate.Web.Startup))]
 namespace PartyMate.Web
 {

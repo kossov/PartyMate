@@ -8,9 +8,9 @@
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    using PartyMate.Data.Models;
+    using Models;
 
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

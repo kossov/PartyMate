@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assemblies.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="ModelConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

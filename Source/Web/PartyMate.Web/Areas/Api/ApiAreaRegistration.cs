@@ -12,13 +12,8 @@ namespace PartyMate.Web.Areas.Api
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-                "Api_default",
-                "Api/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
         }
     }
 }
