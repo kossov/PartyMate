@@ -8,9 +8,9 @@
 
     public class UserService : IUserService
     {
-        private readonly IDbRepository<User> users;
+        private readonly IDeletableEntityRepository<User> users;
 
-        public UserService(IDbRepository<User> users)
+        public UserService(IDeletableEntityRepository<User> users)
         {
             this.users = users;
         }
@@ -33,7 +33,7 @@
         public void Add(User user)
         {
             this.users.Add(user);
-            this.users.Save();
+            this.users.SaveChanges();
         }
     }
 }
