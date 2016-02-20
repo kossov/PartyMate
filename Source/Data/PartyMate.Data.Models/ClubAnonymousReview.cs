@@ -5,23 +5,19 @@
     using Common.Models;
     using PartyMate.Common;
 
-    public class ClubReview : BaseModel<int>
+    public class ClubAnonymousReview : BaseModel<int>
     {
-        public int ClubId { get; set; }
-
-        public virtual Club Club { get; set; }
+        [Required]
+        [Range(1, 5)]
+        public int Rating { get; set; }
 
         [Required]
         [MinLength(ModelConstants.ClubReviewContentMinLength)]
         [MaxLength(ModelConstants.ClubReviewContentMaxLength)]
         public string Content { get; set; }
 
-        [Required]
-        [Range(1, 5)]
-        public int Rating { get; set; }
+        public int ClubId { get; set; }
 
-        public string AuthorId { get; set; }
-
-        public virtual User Author { get; set; }
+        public virtual Club Club { get; set; }
     }
 }

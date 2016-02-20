@@ -17,17 +17,13 @@
     {
         private ICollection<Image> images;
         private ICollection<Club> clubs;
-        private ICollection<ClubReview> reviews;
-        private ICollection<EventLike> likes;
-        private ICollection<EventDisLike> dislikes;
+        private ICollection<EventLike> eventLikes;
 
         public User()
         {
             this.images = new HashSet<Image>();
             this.clubs = new HashSet<Club>();
-            this.reviews = new HashSet<ClubReview>();
-            this.likes = new HashSet<EventLike>();
-            this.dislikes = new HashSet<EventDisLike>();
+            this.eventLikes = new HashSet<EventLike>();
             this.CreatedOn = DateTime.Now;
         }
 
@@ -66,22 +62,10 @@
             set { this.clubs = value; }
         }
 
-        public virtual ICollection<ClubReview> Reviews
+        public virtual ICollection<EventLike> EventLikes
         {
-            get { return this.reviews; }
-            set { this.reviews = value; }
-        }
-
-        public virtual ICollection<EventLike> Likes
-        {
-            get { return this.likes; }
-            set { this.likes = value; }
-        }
-
-        public virtual ICollection<EventDisLike> DisLikes
-        {
-            get { return this.dislikes; }
-            set { this.dislikes = value; }
+            get { return this.eventLikes; }
+            set { this.eventLikes = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

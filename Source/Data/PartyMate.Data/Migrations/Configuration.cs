@@ -22,24 +22,32 @@
         {
             if (!context.Roles.Any())
             {
-                // Create admin role
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole { Name = GlobalConstants.AdministratorRoleName };
-                roleManager.Create(role);
+
+                // Create Admin role
+                var adminRole = new IdentityRole { Name = GlobalConstants.AdministratorRoleName };
+                roleManager.Create(adminRole);
+
+                // Create User role
+                var userRole = new IdentityRole { Name = GlobalConstants.UserRoleName };
+                roleManager.Create(userRole);
 
                 // Create admin user
                 var userStore = new UserStore<User>(context);
                 var userManager = new UserManager<User>(userStore);
-                var user = new User {
+                var admin = new User
+                {
+                    FirstName = GlobalConstants.AdministratorFirstName,
+                    LastName = GlobalConstants.AdministratorLastName,
                     UserName = GlobalConstants.AdministratorUserName,
                     Email = GlobalConstants.AdministratorUserName
                 };
 
-                userManager.Create(user, GlobalConstants.AdministratorPassword);
+                userManager.Create(admin, GlobalConstants.AdministratorPassword);
 
                 // Assign user to admin role
-                userManager.AddToRole(user.Id, GlobalConstants.AdministratorRoleName);
+                userManager.AddToRole(admin.Id, GlobalConstants.AdministratorRoleName);
             }
         }
     }

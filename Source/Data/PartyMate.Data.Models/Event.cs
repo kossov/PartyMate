@@ -5,20 +5,19 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common.Models;
+    using PartyMate.Common;
 
     public class Event : BaseModel<int>
     {
         private ICollection<Image> photos;
         private ICollection<EventComment> comments;
         private ICollection<EventLike> likes;
-        private ICollection<EventDisLike> dislikes;
 
         public Event()
         {
             this.photos = new HashSet<Image>();
             this.comments = new HashSet<EventComment>();
             this.likes = new HashSet<EventLike>();
-            this.dislikes = new HashSet<EventDisLike>();
         }
 
         public int ClubId { get; set; }
@@ -26,15 +25,30 @@
         public virtual Club Club { get; set; }
 
         [Required]
+        [MinLength(ModelConstants.EventTitleMinLength)]
+        [MaxLength(ModelConstants.EventTitleMaxLength)]
+        public string Title { get; set; }
+
+        [Required]
+        [MinLength(ModelConstants.EventDescriptionMinLength)]
+        [MaxLength(ModelConstants.EventDescriptionMaxLength)]
+        public string Description { get; set; }
+
+        [Required]
         public DateTime StartsAt { get; set; }
 
         public DateTime? EndsAt { get; set; }
 
+        [MinLength(ModelConstants.EventMinEntranceFee)]
         public double EntranceFee { get; set; }
 
         public int EventImageId { get; set; }
 
         public virtual Image EventImage { get; set; }
+
+        public int MusicGenreId { get; set; }
+
+        public virtual MusicGenre MusicGenre { get; set; }
 
         public virtual ICollection<Image> Photos
         {
@@ -52,12 +66,6 @@
         {
             get { return this.likes; }
             set { this.likes = value; }
-        }
-
-        public virtual ICollection<EventDisLike> DisLikes
-        {
-            get { return this.dislikes; }
-            set { this.dislikes = value; }
         }
     }
 }

@@ -19,6 +19,12 @@
 
         public IDbSet<Club> Clubs { get; set; }
 
+        public IDbSet<ClubAnonymousReview> ClubAnonymousReviews { get; set; }
+
+        public IDbSet<ClubHiddenImage> ClubHiddenImages { get; set; }
+
+        public IDbSet<ClubHiddenImageVote> ClubHiddenImageVotes { get; set; }
+
         public IDbSet<ClubReview> ClubReviews { get; set; }
 
         public IDbSet<Event> Events { get; set; }
@@ -27,11 +33,11 @@
 
         public IDbSet<EventLike> EventLike { get; set; }
 
-        public IDbSet<EventDisLike> EventDisLikes { get; set; }
-
         public IDbSet<Image> Images { get; set; }
 
         public IDbSet<Location> Locations { get; set; }
+
+        public IDbSet<MusicGenre> MusicGenres { get; set; }
 
         public override IDbSet<User> Users { get; set; }
 

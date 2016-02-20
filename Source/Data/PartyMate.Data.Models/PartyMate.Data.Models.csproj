@@ -59,14 +59,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClubAnonymousReview.cs" />
+    <Compile Include="ClubHiddenImage.cs" />
+    <Compile Include="Enums\MusicGenreEnum.cs" />
+    <Compile Include="Enums\VoteEnum.cs" />
+    <Compile Include="EventLike.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Club.cs" />
-    <Compile Include="EventDisLike.cs" />
-    <Compile Include="EventLike.cs" />
+    <Compile Include="ClubHiddenImageVote.cs" />
     <Compile Include="ClubReview.cs" />
     <Compile Include="EventComment.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="MusicGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

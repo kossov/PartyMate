@@ -11,10 +11,10 @@
         [Required]
         public virtual Club Club { get; set; }
 
+        [Required]
         public decimal Latitude { get; set; }
 
+        [Required]
         public decimal Longitude { get; set; }
-
-        public string Adress { get; set; }
     }
 }
