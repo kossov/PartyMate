@@ -1,0 +1,35 @@
+﻿namespace PartyMate.Services.Data
+{
+    using System;
+    using System.Linq;
+
+    using Interfaces;
+    using PartyMate.Data.Common;
+    using PartyMate.Data.Models;
+
+    public class ClubAnonymousReviewService : IClubAnonymousReviewService
+    {
+        private readonly IDeletableEntityRepository<ClubAnonymousReview> reviews;
+
+        public ClubAnonymousReviewService(IDeletableEntityRepository<ClubAnonymousReview> reviews)
+        {
+            this.reviews = reviews;
+        }
+
+        public void Add(ClubAnonymousReview review)
+        {
+            this.reviews.Add(review);
+            this.reviews.SaveChanges();
+        }
+
+        public IQueryable<ClubAnonymousReview> GetAll()
+        {
+            return this.reviews.All();
+        }
+
+        public ClubAnonymousReview GetById(int id)
+        {
+            return this.reviews.All().FirstOrDefault(r => r.Id == id);
+        }
+    }
+}

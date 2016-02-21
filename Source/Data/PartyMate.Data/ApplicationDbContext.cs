@@ -8,6 +8,7 @@
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
+    using Migrations;
     using Models;
 
     public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
@@ -71,6 +72,12 @@
                     entity.ModifiedOn = DateTime.Now;
                 }
             }
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
