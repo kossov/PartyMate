@@ -10,7 +10,7 @@ namespace PartyMate.Web
     {
         public void Configuration(IAppBuilder app)
         {
-            DatabaseConfig.Initialize();
+            //DatabaseConfig.Initialize();
             ConfigureAuth(app);
         }
     }
