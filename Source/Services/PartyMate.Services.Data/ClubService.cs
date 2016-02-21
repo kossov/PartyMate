@@ -5,7 +5,7 @@
     using Interfaces;
     using PartyMate.Data.Common;
     using PartyMate.Data.Models;
-
+    using System;
     public class ClubService : IClubService
     {
         private IRepository<Club> clubs;
@@ -23,7 +23,8 @@
 
         public IQueryable<Club> GetAll()
         {
-            return this.clubs.All();
+            return this.clubs.All()
+                .OrderByDescending(x => x.Reviews.Count > 0 ? Math.Ceiling(x.Reviews.Sum(r => r.Rating) / (double)x.Reviews.Count) : 0);
         }
 
         public Club GetById(int id)

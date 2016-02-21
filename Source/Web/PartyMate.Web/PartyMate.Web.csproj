@@ -211,6 +211,12 @@
     <Compile Include="Areas\Admin\Models\UserBindingModel.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\ClubsController.cs" />
+    <Compile Include="Areas\Api\Models\AnonymousReview\AnonymousReviewBindingModel.cs" />
+    <Compile Include="Areas\Api\Models\Club\ClubDetailsViewModel.cs" />
+    <Compile Include="Areas\Api\Models\Club\ClubFullDetailsViewModel.cs" />
+    <Compile Include="Areas\Api\Models\HiddenPhoto\HiddenPhotoDetailsViewModel.cs" />
+    <Compile Include="Areas\Api\Models\Image\ImageViewModel.cs" />
+    <Compile Include="Areas\Api\Models\Location\LocationViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -309,7 +315,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Api\Models\" />
     <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

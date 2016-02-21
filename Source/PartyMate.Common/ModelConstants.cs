@@ -21,9 +21,9 @@
         public const int EventMinEntranceFee = 0;
 
         public const int ClubNameMinLength = 2;
-        public const int ClubNameMaxLength = 15;
+        public const int ClubNameMaxLength = 30;
         public const int ClubAdressMinLength = 5;
-        public const int ClubAdressMaxLength = 15;
+        public const int ClubAdressMaxLength = 60;
         public const int ClubPhoneMinLength = 5;
         public const int ClubReviewContentMinLength = 5;
         public const int ClubReviewContentMaxLength = 500;

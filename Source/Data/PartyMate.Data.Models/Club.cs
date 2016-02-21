@@ -26,6 +26,10 @@
         }
 
         [Required]
+        [RegularExpression(ModelConstants.ValidatorRegexUrl)]
+        public string ProfilePicUrl { get; set; }
+
+        [Required]
         [MinLength(ModelConstants.ClubNameMinLength)]
         [MaxLength(ModelConstants.ClubNameMaxLength)]
         public string Name { get; set; }
@@ -38,10 +42,6 @@
         [Required]
         [MinLength(ModelConstants.ClubPhoneMinLength)]
         public string Phone { get; set; }
-
-        public int LocationId { get; set; }
-
-        public virtual Location Location { get; set; }
 
         [RegularExpression(ModelConstants.ValidatorRegexUrl)]
         public string SiteUrl { get; set; }
@@ -56,9 +56,14 @@
         [RegularExpression(ModelConstants.ValidatorRegexEmail)]
         public string Email { get; set; }
 
+        [Range(0, int.MaxValue)]
         public int Capacity { get; set; }
 
         public int Views { get; set; }
+
+        public int LocationId { get; set; }
+
+        public virtual Location Location { get; set; }
 
         public string ModeratorId { get; set; }
 

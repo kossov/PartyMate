@@ -9,5 +9,7 @@
         public const string AdministratorPassword = AdministratorUserName;
 
         public const string UserRoleName = "User";
+
+        public const int DefaultPageSize = 10;
     }
 }

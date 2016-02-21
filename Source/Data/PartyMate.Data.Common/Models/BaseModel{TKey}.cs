@@ -6,6 +6,11 @@
 
     public abstract class BaseModel<TKey> : IAuditInfo, IDeletableEntity
     {
+        public BaseModel()
+        {
+            this.CreatedOn = DateTime.Now;
+        }
+
         [Key]
         public TKey Id { get; set; }
 

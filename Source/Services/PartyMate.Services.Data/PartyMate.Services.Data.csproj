@@ -94,10 +94,6 @@
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>PartyMate.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\PartyMate.Data\PartyMate.Data.csproj">
-      <Project>{7c950cdc-9587-4b65-a204-988efed17948}</Project>
-      <Name>PartyMate.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PartyMate.Services.Web\PartyMate.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
       <Name>PartyMate.Services.Web</Name>
