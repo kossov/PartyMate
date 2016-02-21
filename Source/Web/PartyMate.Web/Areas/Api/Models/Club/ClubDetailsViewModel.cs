@@ -5,6 +5,7 @@
 
     using AutoMapper;
 
+    using Location;
     using PartyMate.Web.Infrastructure.Mapping;
 
     public class ClubDetailsViewModel : IMapFrom<Data.Models.Club>, IHaveCustomMappings
@@ -16,6 +17,8 @@
         public string Name { get; set; }
 
         public int Rating  { get; set; }
+
+        public LocationViewModel Location { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

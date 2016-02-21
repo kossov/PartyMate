@@ -65,26 +65,21 @@
             return this.Ok(result);
         }
 
-        [HttpPost]
-        public IHttpActionResult InRange(LocationBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
+        //[HttpPost]
+        //public IHttpActionResult InRange(LocationBindingModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return this.BadRequest();
+        //    }
 
-            if (model.Latitude == 0 && model.Longitude == 0)
-            {
-                return this.BadRequest();
-            }
+        //    var clubInRange = this.clubs.GetAll()
+        //        .Where(c => Math.Pow((c.Location.Latitude - model.Latitude), 2) + Math.Pow((c.Location.Longitude - model.Longitude), 2) < Math.Pow(GlobalConstants.ClubInRangeRadius, 2))
+        //        .To<ClubDetailsViewModel>()
+        //        .FirstOrDefault();
 
-            var clubInRange = this.clubs.GetAll()
-                .Where(c => Math.Pow((c.Location.Latitude - model.Latitude), 2) + Math.Pow((c.Location.Longitude - model.Longitude), 2) < Math.Pow(GlobalConstants.ClubInRangeRadius, 2))
-                .To<ClubDetailsViewModel>()
-                .FirstOrDefault();
-
-            return this.Ok(clubInRange);
-        }
+        //    return this.Ok(clubInRange);
+        //}
 
         //private int isInRange(Location clubLocation, LocationBindingModel currentLocation)
         //{
