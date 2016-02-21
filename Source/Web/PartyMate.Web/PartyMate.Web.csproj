@@ -216,6 +216,7 @@
     <Compile Include="Areas\Api\Models\Club\ClubFullDetailsViewModel.cs" />
     <Compile Include="Areas\Api\Models\HiddenPhoto\HiddenPhotoDetailsViewModel.cs" />
     <Compile Include="Areas\Api\Models\Image\ImageViewModel.cs" />
+    <Compile Include="Areas\Api\Models\Location\LocationBindingModel.cs" />
     <Compile Include="Areas\Api\Models\Location\LocationViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />

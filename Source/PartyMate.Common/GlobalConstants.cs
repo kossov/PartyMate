@@ -11,5 +11,6 @@
         public const string UserRoleName = "User";
 
         public const int DefaultPageSize = 10;
+        public const double ClubInRangeRadius = 00.002;
     }
 }

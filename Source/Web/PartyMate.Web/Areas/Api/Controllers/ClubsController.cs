@@ -7,7 +7,9 @@
     using Infrastructure.Mapping;
     using Models.Club;
     using Common;
-
+    using Models.Location;
+    using Data.Models;
+    using System;
     public class ClubsController : ApiController
     {
         private const string SizeOrPageNegativeErrorMessage = "Size must be > 0 and Page >= 0";
@@ -63,19 +65,34 @@
             return this.Ok(result);
         }
 
-        // POST: api/Clubs
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult InRange(LocationBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var clubInRange = this.clubs.GetAll()
+                .Where(c => Math.Pow((c.Location.Latitude - model.Latitude), 2) + Math.Pow((c.Location.Longitude - model.Longitude), 2) < Math.Pow(GlobalConstants.ClubInRangeRadius, 2))
+                .To<ClubDetailsViewModel>()
+                .FirstOrDefault();
+
+            return this.Ok(clubInRange);
         }
 
-        // PUT: api/Clubs/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //private int isInRange(Location clubLocation, LocationBindingModel currentLocation)
+        //{
+        //    var R = 6378.137; // Radius of earth in KM
 
-        // DELETE: api/Clubs/5
-        public void Delete(int id)
-        {
-        }
+        //    var dLat = (currentLocation.Latitude - clubLocation.Latitude) * Math.PI / 180;
+        //    var dLon = (currentLocation.Longitude - clubLocation.Longitude) * Math.PI / 180;
+        //    var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+        //    Math.Cos(clubLocation.Latitude * Math.PI / 180) * Math.Cos(currentLocation.Latitude * Math.PI / 180) *
+        //    Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+        //    var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+        //    var d = (int)(R * c);
+        //    return d * 1000; // meters
+        //}
     }
 }
