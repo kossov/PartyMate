@@ -1,6 +1,6 @@
-﻿namespace PartyMate.Services.Data
+﻿using System;
+namespace PartyMate.Services.Data
 {
-    using System;
     using System.Linq;
 
     using Interfaces;
@@ -9,7 +9,7 @@
 
     public class ClubAnonymousReviewService : IClubAnonymousReviewService
     {
-        private readonly IDeletableEntityRepository<ClubAnonymousReview> reviews;
+        private IRepository<ClubAnonymousReview> reviews;
 
         public ClubAnonymousReviewService(IDeletableEntityRepository<ClubAnonymousReview> reviews)
         {
@@ -29,7 +29,7 @@
 
         public ClubAnonymousReview GetById(int id)
         {
-            return this.reviews.All().FirstOrDefault(r => r.Id == id);
+            return this.reviews.All().FirstOrDefault(v => v.Id == id);
         }
     }
 }

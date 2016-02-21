@@ -6,27 +6,27 @@
     using PartyMate.Data.Common;
     using PartyMate.Data.Models;
 
-    public class ClubHiddenImageService : IClubHiddenImageService
+    public class ImageService : IImageService
     {
-        private IRepository<ClubHiddenImage> images;
+        private IRepository<Image> images;
 
-        public ClubHiddenImageService(IDeletableEntityRepository<ClubHiddenImage> images)
+        public ImageService(IDeletableEntityRepository<Image> images)
         {
             this.images = images;
         }
 
-        public void Add(ClubHiddenImage image)
+        public void Add(Image image)
         {
             this.images.Add(image);
             this.images.SaveChanges();
         }
 
-        public IQueryable<ClubHiddenImage> GetAll()
+        public IQueryable<Image> GetAll()
         {
             return this.images.All();
         }
 
-        public ClubHiddenImage GetById(int id)
+        public Image GetById(int id)
         {
             return this.images.All().FirstOrDefault(v => v.Id == id);
         }

@@ -8,7 +8,7 @@
 
     public class ClubHiddenImageVoteService : IClubHiddenImageVoteService
     {
-        private readonly IDeletableEntityRepository<ClubHiddenImageVote> votes;
+        private IRepository<ClubHiddenImageVote> votes;
 
         public ClubHiddenImageVoteService(IDeletableEntityRepository<ClubHiddenImageVote> votes)
         {
