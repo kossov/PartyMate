@@ -68,10 +68,10 @@
                     Adress = @"бул. ""Александър Малинов"" 31, 1729 София",
                     Phone = "02 809 9897",
                     Location = location,
-                    SiteUrl = "http://telerikacademy.com/",
+                    SiteUrl = "http://academy.telerik.com/",
                     FacebookUrl = "https://www.facebook.com/TelerikAcademy",
                     TwitterUrl = "https://twitter.com/TelerikAcademy",
-                    Email = "Zdravko.Georgiev@telerik.com",
+                    Email = "",
                     Capacity = 5000,
                     ModeratorId = admin.Id
                 };
