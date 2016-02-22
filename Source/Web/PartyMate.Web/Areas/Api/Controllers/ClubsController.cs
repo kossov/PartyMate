@@ -10,6 +10,8 @@
     using Models.Location;
     using Data.Models;
     using System;
+    using Models.AnonymousReview;
+    using Models.HiddenImage;
     public class ClubsController : ApiController
     {
         private const string SizeOrPageNegativeErrorMessage = "Size must be > 0 and Page >= 0";
@@ -63,6 +65,76 @@
                 .FirstOrDefault();
 
             return this.Ok(result);
+        }
+
+        [HttpPost]
+        public IHttpActionResult Review(AnonymousReviewBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var clubToAddReviewTo = this.clubs.GetById(model.ClubId);
+            if (clubToAddReviewTo == null)
+            {
+                return this.BadRequest();
+            }
+
+            var newAnonymousReview = new ClubAnonymousReview()
+            {
+                 Club = clubToAddReviewTo,
+                 Content = model.Content,
+                 Rating = model.Rating
+            };
+
+            this.anonymousReviews.Add(newAnonymousReview);
+            return this.Ok();
+        }
+
+        [HttpGet]
+        public IHttpActionResult HiddenImages(int id)
+        {
+            var club = this.clubs.GetById(id);
+            if (club == null)
+            {
+                return this.BadRequest();
+            }
+
+            var images = this.clubs.GetAll()
+                .Where(c => c.Id == id)
+                .Select(c => c.HiddenImages)
+                .To<HiddenImageViewModel>()
+                .ToList();
+
+            return this.Ok(images);
+        }
+
+        // TODO: WORK WITH MANY IMAGES
+        [HttpPost]
+        public IHttpActionResult HiddenImages(HiddenImageBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var club = this.clubs.GetById(model.ClubId);
+            if (club == null)
+            {
+                return this.BadRequest();
+            }
+
+            byte[] imageContent = Convert.FromBase64String(model.Content);
+            var newHiddenImage = new ClubHiddenImage()
+            {
+                Club = club,
+                Content = imageContent
+            };
+
+            this.hiddenImages.Add(newHiddenImage);
+
+            return this.Ok();
         }
 
         //[HttpPost]

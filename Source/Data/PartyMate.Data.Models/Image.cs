@@ -3,13 +3,11 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common.Models;
-    using PartyMate.Common;
 
     public class Image : BaseModel<int>
     {
         [Required]
-        [RegularExpression(ModelConstants.ValidatorRegexUrl)]
-        public string Path { get; set; }
+        public byte[] Content { get; set; }
 
         public string UserId { get; set; }
 

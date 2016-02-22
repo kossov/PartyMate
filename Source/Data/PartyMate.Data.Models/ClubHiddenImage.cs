@@ -15,7 +15,7 @@
         }
 
         [Required]
-        public string Path { get; set; }
+        public byte[] Content { get; set; }
 
         public int ClubId { get; set; }
 

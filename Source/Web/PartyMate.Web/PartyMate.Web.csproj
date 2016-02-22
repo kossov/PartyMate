@@ -214,7 +214,8 @@
     <Compile Include="Areas\Api\Models\AnonymousReview\AnonymousReviewBindingModel.cs" />
     <Compile Include="Areas\Api\Models\Club\ClubDetailsViewModel.cs" />
     <Compile Include="Areas\Api\Models\Club\ClubFullDetailsViewModel.cs" />
-    <Compile Include="Areas\Api\Models\HiddenPhoto\HiddenPhotoDetailsViewModel.cs" />
+    <Compile Include="Areas\Api\Models\HiddenImage\HiddenImageBindingModel.cs" />
+    <Compile Include="Areas\Api\Models\HiddenImage\HiddenImageViewModel.cs" />
     <Compile Include="Areas\Api\Models\Image\ImageViewModel.cs" />
     <Compile Include="Areas\Api\Models\Location\LocationBindingModel.cs" />
     <Compile Include="Areas\Api\Models\Location\LocationViewModel.cs" />
