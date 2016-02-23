@@ -90,7 +90,7 @@
 
             var newAnonymousReview = new ClubAnonymousReview()
             {
-                 Club = clubToAddReviewTo,
+                 ClubId = clubToAddReviewTo.Id,
                  Content = model.Content,
                  Rating = model.Rating
             };
@@ -142,7 +142,7 @@
 
             var newHiddenImage = new ClubHiddenImage()
             {
-                Club = club,
+                ClubId = club.Id,
                 Path = model.Path
             };
 

@@ -30,6 +30,7 @@ namespace PartyMate.Web.Areas.Api.Controllers
             this.anonymousReviews = anonymousReviews;
             this.hiddenImages = hiddenImages;
             this.hiddenImagesVotes = hiddenImagesVotes;
+
         }
 
         [HttpPost]
@@ -46,7 +47,7 @@ namespace PartyMate.Web.Areas.Api.Controllers
             var image = hiddenImages.GetById(model.ImageId);
             var vote = new ClubHiddenImageVote()
             {
-                Image = image,
+                ImageId = image.Id,
                 Vote = model.Rating
             };
 
