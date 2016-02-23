@@ -42,9 +42,13 @@
         [MinLength(ModelConstants.EventMinEntranceFee)]
         public double EntranceFee { get; set; }
 
-        public int EventImageId { get; set; }
+        public string Url { get; set; }
 
-        public virtual Image EventImage { get; set; }
+        public string EventOwner { get; set; }
+
+        public int ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
 
         public int MusicGenreId { get; set; }
 

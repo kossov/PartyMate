@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeletableEntityRepository.cs" />
-    <Compile Include="EfGenericRepository.cs" />
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="IDeletableEntityRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Models\BaseModel{TKey}.cs" />

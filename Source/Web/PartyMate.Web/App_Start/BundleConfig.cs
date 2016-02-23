@@ -34,6 +34,14 @@ namespace PartyMate.Web
             bundles.Add(new ScriptBundle("~/bundles/kendojs").Include(
                       "~/Scripts/Kendo/kendo.all.min.js",
                       "~/Scripts/Kendo/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/rating").Include(
+                        "~/Scripts/ratingsjs/js/star-rating.min.js",
+                        "~/Scripts/ratingsjs/js/star-rating_locale_LANG.js"));
+
+            bundles.Add(new StyleBundle("~/Content/rating").Include(
+                    "~/Content/ratingscss/css/star-rating.css",
+                    "~/Content/ratingscss/css/theme-krajee-svg.css"));
         }
     }
 }

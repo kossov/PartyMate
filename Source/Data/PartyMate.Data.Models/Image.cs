@@ -7,10 +7,6 @@
     public class Image : BaseModel<int>
     {
         [Required]
-        public byte[] Content { get; set; }
-
-        public string UserId { get; set; }
-
-        public virtual User User { get; set; }
+        public string Content { get; set; }
     }
 }

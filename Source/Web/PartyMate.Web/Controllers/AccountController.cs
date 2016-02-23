@@ -10,9 +10,8 @@
     using Microsoft.Owin.Security;
 
     using Data.Models;
-    using Models;
     using Common;
-
+    using Models;
     [Authorize]
     public class AccountController : Controller
     {

@@ -12,6 +12,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendojs")
 
+    @RenderSection("styles", required: false)
+
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -57,5 +59,7 @@
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    @RenderSection("rating", required: false)
 </body>
 </html>
