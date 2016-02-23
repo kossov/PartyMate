@@ -131,10 +131,7 @@
                 return this.BadRequest();
             }
 
-            var dbContext = new ApplicationDbContext();
-            var hiddenImages = new DeletableEntityRepository<ClubHiddenImage>(dbContext);
-            var clubs = new DeletableEntityRepository<Club>(dbContext);
-            var club = clubs.GetById(model.ClubId);
+            var club = this.clubs.GetById(model.ClubId);
             if (club == null)
             {
                 return this.BadRequest();
@@ -146,7 +143,7 @@
                 Path = model.Path
             };
 
-            hiddenImages.Add(newHiddenImage);
+            this.hiddenImages.Add(newHiddenImage);
 
             return this.Ok();
         }
