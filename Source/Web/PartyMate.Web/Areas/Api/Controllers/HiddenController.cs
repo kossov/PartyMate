@@ -31,7 +31,7 @@ namespace PartyMate.Web.Areas.Api.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Rate(HiddenImageVoteBindingModel model)
+        public IHttpActionResult Vote(HiddenImageVoteBindingModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -42,11 +42,11 @@ namespace PartyMate.Web.Areas.Api.Controllers
             var vote = new ClubHiddenImageVote()
             {
                 Image = image,
-                Vote = (VoteEnum)model.Rating
+                Vote = model.Rating
             };
 
             this.hiddenImagesVotes.Add(vote);
-            var rating = (int)Math.Ceiling(image.Votes.Sum(v => (int)v.Vote) / (double)image.Votes.Count);
+            var rating = image.Votes.Sum(v => (int)v.Vote);
             return this.Ok(rating);
         }
     }
