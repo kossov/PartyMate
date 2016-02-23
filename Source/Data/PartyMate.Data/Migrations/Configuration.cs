@@ -71,7 +71,7 @@
                     SiteUrl = "http://academy.telerik.com/",
                     FacebookUrl = "https://www.facebook.com/TelerikAcademy",
                     TwitterUrl = "https://twitter.com/TelerikAcademy",
-                    Email = "",
+                    Email = "academy@telerik.com",
                     Capacity = 2000,
                     ModeratorId = admin.Id
                 };
@@ -99,7 +99,7 @@
                     SiteUrl = "http://yaltaclub.com/",
                     FacebookUrl = "https://www.facebook.com/yaltaclub",
                     TwitterUrl = "",
-                    Email = "",
+                    Email = "yaltaNqmatEmail@abv.bg",
                     Capacity = 4000,
                     ModeratorId = admin.Id
                 };
