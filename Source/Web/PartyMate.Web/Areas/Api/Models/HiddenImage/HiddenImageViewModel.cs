@@ -5,6 +5,6 @@
 
     public class HiddenImageViewModel : IMapFrom<ClubHiddenImage>
     {
-        public byte[] Content { get; set; }
+        public string Path { get; set; }
     }
 }

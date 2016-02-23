@@ -12,6 +12,7 @@
     using System;
     using Models.AnonymousReview;
     using Models.HiddenImage;
+    using System.Collections.Generic;
     public class ClubsController : ApiController
     {
         private const string SizeOrPageNegativeErrorMessage = "Size must be > 0 and Page >= 0";
@@ -35,7 +36,7 @@
         }
 
         [HttpGet]
-        public IHttpActionResult All(int page = 1, int size = GlobalConstants.DefaultPageSize)
+        public IHttpActionResult All(int page = 1, int size = int.MaxValue) //GlobalConstants.DefaultPageSize)
         {
             if (page <= 0 || size < 0)
             {
@@ -101,19 +102,18 @@
                 return this.BadRequest();
             }
 
-            var images = this.clubs.GetAll()
-                .Where(c => c.Id == id)
-                .Select(c => c.HiddenImages)
-                .To<HiddenImageViewModel>()
-                .ToList();
+            var images = new List<HiddenImageViewModel>();
+            foreach (var image in club.HiddenImages)
+            {
+                var hiddenImageModel = new HiddenImageViewModel()
+                {
+                    Path = image.Path
+                };
+
+                images.Add(hiddenImageModel);
+            }
 
             return this.Ok(images);
-        }
-
-        [HttpPost]
-        public IHttpActionResult Test(string model)
-        {
-            return this.Ok("HI FROM SERVER `~~~~~~~~ " + model);
         }
 
         // TODO: WORK WITH MANY IMAGES
@@ -131,11 +131,10 @@
                 return this.BadRequest();
             }
 
-            byte[] imageContent = Convert.FromBase64String(model.Content);
             var newHiddenImage = new ClubHiddenImage()
             {
                 Club = club,
-                Content = imageContent
+                Path = model.Path
             };
 
             this.hiddenImages.Add(newHiddenImage);

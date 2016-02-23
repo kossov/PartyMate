@@ -4,9 +4,9 @@
 
     public class HiddenImageBindingModel
     {
+        [Range(1, int.MaxValue)]
         public int ClubId { get; set; }
 
-        [Required]
-        public string Content { get; set; }
+        public string Path { get; set; }
     }
 }

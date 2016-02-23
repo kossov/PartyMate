@@ -5,7 +5,7 @@
 
     public class AnonymousReviewBindingModel
     {
-        [Range(0, long.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int ClubId { get; set; }
 
         [Required]
