@@ -110,6 +110,12 @@
             return this.Ok(images);
         }
 
+        [HttpPost]
+        public IHttpActionResult Test(string model)
+        {
+            return this.Ok("HI FROM SERVER `~~~~~~~~ " + model);
+        }
+
         // TODO: WORK WITH MANY IMAGES
         [HttpPost]
         public IHttpActionResult HiddenImages(HiddenImageBindingModel model)
