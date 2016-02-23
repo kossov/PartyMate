@@ -14,6 +14,8 @@
     using Models.HiddenImage;
     using System.Collections.Generic;
     using Data.Models.Enums;
+    using Data.Common;
+    using Data;
     public class ClubsController : ApiController
     {
         private const string SizeOrPageNegativeErrorMessage = "Size must be > 0 and Page >= 0";
@@ -77,7 +79,10 @@
                 return this.BadRequest();
             }
 
-            var clubToAddReviewTo = this.clubs.GetById(model.ClubId);
+            var dbContext = new ApplicationDbContext();
+            var reviews = new DeletableEntityRepository<ClubAnonymousReview>(dbContext);
+            var clubs = new DeletableEntityRepository<Club>(dbContext);
+            var clubToAddReviewTo = clubs.GetById(model.ClubId);
             if (clubToAddReviewTo == null)
             {
                 return this.BadRequest();
@@ -90,7 +95,7 @@
                  Rating = model.Rating
             };
 
-            this.anonymousReviews.Add(newAnonymousReview);
+            reviews.Add(newAnonymousReview);
             return this.Ok();
         }
 
@@ -126,7 +131,10 @@
                 return this.BadRequest();
             }
 
-            var club = this.clubs.GetById(model.ClubId);
+            var dbContext = new ApplicationDbContext();
+            var hiddenImages = new DeletableEntityRepository<ClubHiddenImage>(dbContext);
+            var clubs = new DeletableEntityRepository<Club>(dbContext);
+            var club = clubs.GetById(model.ClubId);
             if (club == null)
             {
                 return this.BadRequest();
@@ -138,7 +146,7 @@
                 Path = model.Path
             };
 
-            this.hiddenImages.Add(newHiddenImage);
+            hiddenImages.Add(newHiddenImage);
 
             return this.Ok();
         }

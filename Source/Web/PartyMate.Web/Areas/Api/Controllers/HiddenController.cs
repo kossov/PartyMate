@@ -1,4 +1,6 @@
-﻿using PartyMate.Data.Models;
+﻿using PartyMate.Data;
+using PartyMate.Data.Common;
+using PartyMate.Data.Models;
 using PartyMate.Data.Models.Enums;
 using PartyMate.Services.Data.Interfaces;
 using PartyMate.Web.Areas.Api.Models.HiddenImage;
@@ -38,14 +40,17 @@ namespace PartyMate.Web.Areas.Api.Controllers
                 return this.BadRequest();
             }
 
-            var image = this.hiddenImages.GetById(model.ImageId);
+            var dbContext = new ApplicationDbContext();
+            var hiddenImages = new DeletableEntityRepository<ClubHiddenImage>(dbContext);
+            var hiddenImageVotes = new DeletableEntityRepository<ClubHiddenImageVote>(dbContext);
+            var image = hiddenImages.GetById(model.ImageId);
             var vote = new ClubHiddenImageVote()
             {
                 Image = image,
                 Vote = model.Rating
             };
 
-            this.hiddenImagesVotes.Add(vote);
+            hiddenImagesVotes.Add(vote);
             var rating = image.Votes.Sum(v => (int)v.Vote);
             return this.Ok(rating);
         }
