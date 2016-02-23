@@ -13,6 +13,7 @@
     using Models.AnonymousReview;
     using Models.HiddenImage;
     using System.Collections.Generic;
+    using Data.Models.Enums;
     public class ClubsController : ApiController
     {
         private const string SizeOrPageNegativeErrorMessage = "Size must be > 0 and Page >= 0";
