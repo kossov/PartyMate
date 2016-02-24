@@ -7,6 +7,6 @@
     public class Image : BaseModel<int>
     {
         [Required]
-        public string Content { get; set; }
+        public byte[] Content { get; set; }
     }
 }

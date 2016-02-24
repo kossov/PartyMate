@@ -1,0 +1,37 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<PartyMate.Web.Areas.Admin.Models.AdminClubViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(e => e.Id).ClientTemplate(
+              "<img src='" + Url.Action("GetImage", "Image", new { area = string.Empty, id = "#= Id #" }) + "' alt='Some Image' />"
+              );
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.Adress);
+          columns.Bound(c => c.Phone);
+          columns.Bound(c => c.SiteUrl);
+          columns.Bound(c => c.FacebookUrl);
+          columns.Bound(c => c.TwitterUrl);
+          columns.Bound(c => c.Email);
+          columns.Bound(c => c.Capacity);
+          columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}"); ;
+          columns.Bound(c => c.DeletedOn).Format("{0:yyyy-MM-dd HH:mm}"); ;
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Clubs_Read", "Clubs"))
+          .Update(update => update.Action("Clubs_Update", "Clubs"))
+          .Destroy(destroy => destroy.Action("Clubs_Destroy", "Clubs"))
+      )
+)

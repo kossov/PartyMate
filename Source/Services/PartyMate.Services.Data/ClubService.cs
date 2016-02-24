@@ -1,11 +1,12 @@
 ﻿namespace PartyMate.Services.Data
 {
+    using System;
     using System.Linq;
 
     using Interfaces;
     using PartyMate.Data.Common;
     using PartyMate.Data.Models;
-    using System;
+
     public class ClubService : IClubService
     {
         private IRepository<Club> clubs;

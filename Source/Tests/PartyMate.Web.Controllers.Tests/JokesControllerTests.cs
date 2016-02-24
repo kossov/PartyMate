@@ -1,13 +1,10 @@
 ﻿namespace PartyMate.Web.Controllers.Tests
 {
     using Moq;
-
+    using NUnit.Framework;
     using PartyMate.Data.Models;
     using PartyMate.Services.Data;
     using PartyMate.Web.Infrastructure.Mapping;
-
-    using NUnit.Framework;
-
     using TestStack.FluentMVCTesting;
 
     [TestFixture]

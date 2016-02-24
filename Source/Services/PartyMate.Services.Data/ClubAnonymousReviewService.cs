@@ -1,5 +1,4 @@
-﻿using System;
-namespace PartyMate.Services.Data
+﻿namespace PartyMate.Services.Data
 {
     using System.Linq;
 

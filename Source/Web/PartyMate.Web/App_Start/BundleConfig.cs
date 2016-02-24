@@ -42,6 +42,12 @@ namespace PartyMate.Web
             bundles.Add(new StyleBundle("~/Content/rating").Include(
                     "~/Content/ratingscss/css/star-rating.css",
                     "~/Content/ratingscss/css/theme-krajee-svg.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/maps").Include(
+            "~/Scripts/Maps/homePageMaps.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/maps").Include(
+            "~/Scripts/Maps/map.js"));
         }
     }
 }

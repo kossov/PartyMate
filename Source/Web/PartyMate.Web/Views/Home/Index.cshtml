@@ -1,11 +1,15 @@
-﻿@{
+﻿@model int
+@{
     ViewBag.Title = "Home";
 }
 
 <div class="jumbotron">
     <h1>PartyMate</h1>
     <p class="lead">The place with Parties that worth considering... </p>
-    <p>@Html.ActionLink("Start exploring...", "Register", null, new { @class = "btn btn-primary btn-lg" })</p>
+    @if (!this.User.Identity.IsAuthenticated)
+    {
+        <p>@Html.ActionLink("Start exploring...", "Register", "Account", null, new { @class = "btn btn-primary btn-lg" })</p>
+    }
 </div>
 
 <div class="row" id="eventsContainer">
@@ -29,7 +33,7 @@
 
         var getEvents = function () {
             $.ajax({
-                url: '@Url.Content("~/Events")',
+                url: '@Url.Content("~/Event/_EventsPartial?page=" + Model)',
                 success: function (data) {
                     $('#eventsContainer').html(data);
                 }

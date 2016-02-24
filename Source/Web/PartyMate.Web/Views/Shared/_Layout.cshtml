@@ -32,15 +32,28 @@
                     @if (this.User.Identity.IsAuthenticated)
                     {
                         <li class="dropdown">
-                            <a runat="server" data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-list-alt" /> Clubs <span class="caret" /></a>
+                            <a data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-sunglasses" /> Clubs <span class="caret" /></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Upcomming", "UpcommingTrips", "Trip")</li>
+                                <li>@Html.ActionLink("Add Club", "Add", new { area = "", controller = "Club" })</li>
+                                <li>@Html.ActionLink("Browse Clubs", "Browse", new { area = "", controller = "Club" })</li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a runat="server" data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-list-alt" /> Events <span class="caret" /></a>
+                            <a data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-music" /> Events <span class="caret" /></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Upcomming", "UpcommingTrips", "Trip")</li>
+                                <li>@Html.ActionLink("Add Event", "Add", new { area = "", controller = "Event" })</li>
+                                <li>@Html.ActionLink("Upcomming", "UpcommingTrips", new { area = "", controller = "Trip" })</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (this.User.IsInRole(PartyMate.Common.GlobalConstants.AdministratorRoleName))
+                    {
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="nav-buttons-custom"><span class="glyphicon glyphicon-list-alt" /> Admin Panel <span class="caret" /></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Manage Clubs", "Manage", "Clubs", new { area = "Admin" }, null)</li>
+                                <li>@Html.ActionLink("Manage Events", "Manage", "Events", new { area = "Admin" }, null)</li>
                             </ul>
                         </li>
                     }
@@ -50,6 +63,15 @@
         </div>
     </div>
     <div class="container body-content">
+        <hr />
+
+        @if (this.TempData["Notification"] != null)
+        {
+            <div id="nitificationSuccess" class="panel panel-success col-md-8 col-md-offset-2 text-center" style="margin-top:1%; height: 25px; font-size: 20px; background-color:lightgreen">
+                @this.TempData["Notification"]
+            </div>
+        }
+
         @RenderBody()
         <hr />
         <footer>
@@ -58,8 +80,15 @@
     </div>
 
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $("#nitificationSuccess").fadeOut(2500, function () { });
+        });
+    </script>
 
+    @RenderSection("scripts", required: false)
     @RenderSection("rating", required: false)
+    @RenderSection("maps", required: false)
+    @RenderSection("fileUpload", required: false)
 </body>
 </html>

@@ -7,7 +7,7 @@
 
     using PartyMate.Data.Models;
     using PartyMate.Web.Infrastructure.Mapping;
-
+    using Data.Models.Enums;
     public class EventHomeViewModel : IMapFrom<Event>, IHaveCustomMappings
     {
         [Key]
@@ -21,13 +21,10 @@
 
         public string EventOwner { get; set; }
 
-        public string Genre { get; set; }
-
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Event, EventViewModel>()
-                .ForMember(m => m.ClubName, opts => opts.MapFrom(e => e.Club.Name))
-                .ForMember(m => m.Genre, opts => opts.MapFrom(e => e.MusicGenre.Genre.ToString()));
+                .ForMember(m => m.ClubName, opts => opts.MapFrom(e => e.Club.Name));
         }
     }
 }

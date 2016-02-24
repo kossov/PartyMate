@@ -20,8 +20,6 @@
 
         public DateTime StartsAt { get; set; }
 
-        public DateTime? EndsAt { get; set; }
-
         public double EntrenceFee { get; set; }
 
         public string Url { get; set; }

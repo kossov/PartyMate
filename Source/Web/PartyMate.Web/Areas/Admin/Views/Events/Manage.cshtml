@@ -1,0 +1,27 @@
+﻿
+@(Html.Kendo().Grid<PartyMate.Web.Areas.Admin.Models.AdminEventViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Title);
+          columns.Bound(c => c.Url);
+          columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+          columns.Bound(c => c.DeletedOn).Format("{0:yyyy-MM-dd HH:mm}");
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Events_Read", "Events"))
+          .Update(update => update.Action("Events_Update", "Events"))
+          .Destroy(destroy => destroy.Action("Events_Destroy", "Events"))
+      )
+)

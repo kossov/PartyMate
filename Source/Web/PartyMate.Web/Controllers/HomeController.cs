@@ -14,9 +14,9 @@ namespace PartyMate.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public ActionResult Index(int page = 0)
         {
-            return View();
+            return View(page);
         }
 
         public ActionResult About()

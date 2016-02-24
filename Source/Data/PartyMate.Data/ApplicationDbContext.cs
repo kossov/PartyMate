@@ -2,13 +2,13 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
     using Common.Models;
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    using Migrations;
     using Models;
 
     public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
@@ -16,6 +16,11 @@
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+        }
+
+        DbSet<TEntity> IApplicationDbContext.Set<TEntity>()
+        {
+            return base.Set<TEntity>();
         }
 
         public IDbSet<Club> Clubs { get; set; }
@@ -51,6 +56,12 @@
         {
             this.ApplyAuditInfoRules();
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
         private void ApplyAuditInfoRules()

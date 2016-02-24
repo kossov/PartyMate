@@ -2,15 +2,12 @@
 {
     using System.Data.Entity.Migrations;
     using System.Linq;
-
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-
     using Models;
-
-    using Common;
     using PartyMate.Common;
-
+    using System.Net;
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
@@ -61,9 +58,28 @@
                 locations.Add(location);
                 locations.SaveChanges();
 
+                byte[] img1;
+                byte[] img2;
+                using (var webClient = new WebClient())
+                {
+                    img1 = webClient.DownloadData("http://telerikacademy.com/Content/Images/news-img01.png");
+                    img2 = webClient.DownloadData("http://yaltaclub.com/images/yalta-logo.png?1383083648");
+                }
+
+                var club1Image = new Image { Content = img1 };
+                var images = new DeletableEntityRepository<Image>(context);
+                images.Add(club1Image);
+
+                var genres = new DeletableEntityRepository<MusicGenre>(context);
+
+                var dance = new MusicGenre { Genre = Models.Enums.MusicGenreEnum.Dance };
+                var house = new MusicGenre { Genre = Models.Enums.MusicGenreEnum.House };
+                genres.Add(dance);
+                genres.Add(house);
+
                 var club = new Club()
                 {
-                    ProfilePicUrl = "http://telerikacademy.com/Content/Images/news-img01.png",
+                    ProfilePic = club1Image,
                     Name = "TelerikAcademy",
                     Adress = @"бул. ""Александър Малинов"" 31, 1729 София",
                     Phone = "02 809 9897",
@@ -73,7 +89,8 @@
                     TwitterUrl = "https://twitter.com/TelerikAcademy",
                     Email = "academy@telerik.com",
                     Capacity = 2000,
-                    ModeratorId = admin.Id
+                    ModeratorId = admin.Id,
+                    MusicGenre = dance
                 };
 
                 var review = new ClubReview()
@@ -89,19 +106,23 @@
                 var clubs = new DeletableEntityRepository<Club>(context);
                 clubs.Add(club);
 
+                var club2Image = new Image { Content = img2 };
+                images.Add(club2Image);
+
                 var club2 = new Club()
                 {
-                    ProfilePicUrl = "http://yaltaclub.com/images/yalta-logo.png?1383083648",
+                    ProfilePic = club2Image,
                     Name = "Yalta Club",
                     Adress = @"20, Tsar Osvoboditel Blvd, Sofia 1000, Bulgaria",
                     Phone = "0897 870 230",
                     Location = location,
                     SiteUrl = "http://yaltaclub.com/",
                     FacebookUrl = "https://www.facebook.com/yaltaclub",
-                    TwitterUrl = "",
+                    TwitterUrl = string.Empty,
                     Email = "yaltaNqmatEmail@abv.bg",
                     Capacity = 4000,
-                    ModeratorId = admin.Id
+                    ModeratorId = admin.Id,
+                    MusicGenre = house
                 };
 
                 var review2 = new ClubReview()
