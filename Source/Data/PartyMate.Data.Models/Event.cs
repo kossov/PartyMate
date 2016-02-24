@@ -6,7 +6,7 @@
 
     using Common.Models;
     using PartyMate.Common;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Event : BaseModel<int>
     {
         private ICollection<Image> photos;
@@ -21,7 +21,7 @@
         }
 
         public int ClubId { get; set; }
-
+       
         public virtual Club Club { get; set; }
 
         [Required]
@@ -37,14 +37,17 @@
         [Required]
         public DateTime StartsAt { get; set; }
 
-        public DateTime? EndsAt { get; set; }
-
-        [MinLength(ModelConstants.EventMinEntranceFee)]
+        [Range(0, double.MaxValue)]
         public double EntranceFee { get; set; }
 
-        public int EventImageId { get; set; }
+        [RegularExpression(ModelConstants.ValidatorRegexUrl)]
+        public string Url { get; set; }
 
-        public virtual Image EventImage { get; set; }
+        public string EventOwner { get; set; }
+
+        public int ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
 
         public int MusicGenreId { get; set; }
 

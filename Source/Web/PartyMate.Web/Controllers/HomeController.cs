@@ -1,16 +1,22 @@
-﻿using System;
+﻿using PartyMate.Data.Common;
+using PartyMate.Data.Models;
+using PartyMate.Web.Infrastructure.Mapping;
+using PartyMate.Web.Models;
+using PartyMate.Web.Models.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
 namespace PartyMate.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public ActionResult Index(int page = 0)
         {
-            return View();
+            return View(page);
         }
 
         public ActionResult About()

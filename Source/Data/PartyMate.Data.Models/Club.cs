@@ -10,7 +10,6 @@
     {
         private ICollection<Image> photos;
         private ICollection<Event> events;
-        private ICollection<MusicGenre> musicGenres;
         private ICollection<ClubReview> reviews;
         private ICollection<ClubHiddenImage> hiddenImages;
         private ICollection<ClubAnonymousReview> anonymousReviews;
@@ -20,14 +19,12 @@
             this.photos = new HashSet<Image>();
             this.events = new HashSet<Event>();
             this.reviews = new HashSet<ClubReview>();
-            this.musicGenres = new HashSet<MusicGenre>();
             this.hiddenImages = new HashSet<ClubHiddenImage>();
             this.anonymousReviews = new HashSet<ClubAnonymousReview>();
         }
 
         [Required]
-        [RegularExpression(ModelConstants.ValidatorRegexUrl)]
-        public string ProfilePicUrl { get; set; }
+        public Image ProfilePic { get; set; }
 
         [Required]
         [MinLength(ModelConstants.ClubNameMinLength)]
@@ -69,11 +66,9 @@
 
         public virtual User Moderator { get; set; }
 
-        public virtual ICollection<MusicGenre> MusicGenres
-        {
-            get { return this.musicGenres; }
-            set { this.musicGenres = value; }
-        }
+        public int MusicGenreId { get; set; }
+
+        public virtual MusicGenre MusicGenre { get; set; }
 
         public virtual ICollection<Image> Photos
         {

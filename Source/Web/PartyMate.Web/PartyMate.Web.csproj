@@ -207,7 +207,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClubsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminClubViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AdminEventViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AdminImageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UserBindingModel.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\ClubsController.cs" />
@@ -222,14 +228,26 @@
     <Compile Include="Areas\Api\Models\Location\LocationBindingModel.cs" />
     <Compile Include="Areas\Api\Models\Location\LocationViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseAuthorizationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Account\ManageViewModels.cs" />
+    <Compile Include="Models\Clubs\ClubBindingViewModel.cs" />
+    <Compile Include="Models\Events\EventAddBaseViewModel.cs" />
+    <Compile Include="Models\Events\EventBindingModel.cs" />
+    <Compile Include="Models\Events\EventHomeViewModel.cs" />
+    <Compile Include="Models\Events\EventViewModel.cs" />
+    <Compile Include="Models\Events\FetchEventsJSONObject.cs" />
+    <Compile Include="Models\PagableListViewModel{T}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Startup.cs" />
@@ -267,6 +285,10 @@
     <Content Include="Content\Kendo\kendo.common.min.css.map" />
     <Content Include="Content\Kendo\kendo.metro.min.css.map" />
     <Content Include="Areas\Api\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Clubs\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\Events\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AdminClubViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\AdminEventViewModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -277,7 +299,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Kendo\kendo.all.min.js" />
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\Maps\map.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ratingjs\js\star-rating.js" />
+    <Content Include="Scripts\ratingjs\js\star-rating.min.js" />
+    <Content Include="Scripts\ratingjs\js\star-rating_locale_LANG.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -290,7 +316,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -315,13 +340,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Event\_EventsPartial.cshtml" />
+    <Content Include="Views\Club\Add.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Shared\ServerError.cshtml" />
+    <Content Include="Views\Shared\NotAuthorized.cshtml" />
+    <Content Include="Views\Event\Add.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Api\Models\NewFolder1\" />
     <Folder Include="Areas\Api\Views\Shared\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Views\Clubs\" />
+    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,0 +1,102 @@
+﻿@model PartyMate.Web.Models.Events.EventBindingModel
+@{
+    ViewBag.Title = "Add Event";
+    var genres = new List<SelectListItem>();
+
+    foreach (var genre in Enum.GetValues(typeof(PartyMate.Data.Models.Enums.MusicGenreEnum)))
+    {
+        genres.Add(new SelectListItem
+        {
+            Text = genre.ToString(),
+            Value = genre.ToString()
+        });
+    }
+}
+
+@using (Html.BeginForm("Add/" + Model.Id, "Event", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <h4>Add a new Event.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartsAt, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @(Html.Kendo().DatePickerFor(m => m.StartsAt)
+              .Name("StartsAt")
+              .Value(DateTime.Today)
+              .Max(DateTime.MaxValue)
+              .Culture("US")
+              .Format("yyyy-MM-dd")
+              .HtmlAttributes(new { @class = "form-control" }))
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EntranceFee, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EntranceFee, new { @class = "form-control", placeholder = "Optional" })
+        </div>
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Url, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Url, new { @class = "form-control", placeholder = "Optional" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.EventOwner, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.EventOwner, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Genre, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Genre, genres, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <img id="imgPreview" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Image, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                <input type="file" name="Image" id="fileTag" placeholder="Profile Picture">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Add" />
+            </div>
+        </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section fileUpload {
+    <script>
+        $('#fileTag').change(function (event) {
+            var tmppath = URL.createObjectURL(event.target.files[0]);
+            $("imgPreview").fadeIn("fast").attr('src', tmppath);
+            //var image = (document.getElementById("fileTag").value).split("\\")[2];
+            //document.getElementById("changeImg").src = image;
+        });
+    </script>
+}

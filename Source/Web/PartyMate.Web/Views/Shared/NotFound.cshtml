@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Not Found";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="text-center">
+            <h3>Sorry but we couldn’t find this page :(</h3>
+        </div>
+        <div id="site-layout-example-right" class="col s12">
+            <div class="row text-center">
+                <p>
+                    <button onclick="goBack()" class="btn btn-primary">Back</button>
+                    <a href="/" class="btn btn-default">Homepage</a>
+                </p>
+                <h1>404</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+</script>

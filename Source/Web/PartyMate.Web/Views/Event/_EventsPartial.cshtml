@@ -1,0 +1,63 @@
+﻿@model PartyMate.Web.Models.PagableListViewModel<PartyMate.Web.Models.Events.EventHomeViewModel>
+
+@{ 
+    var groupedList = Model.List.GroupBy(m => m.StartsAt);
+}
+
+<div class="col-md-12 text-center">
+    @foreach (var dateTime in groupedList)
+    {
+        foreach (var ev in dateTime)
+        {
+            var day = ev.StartsAt.DayOfWeek.ToString("d");
+            var date = ev.StartsAt.Day;
+            var eventUrl = "~/Event/" + ev.Id;
+            <a class="row" src="@eventUrl">
+                <div class="col-md-2 text-center jumbotron">
+                    <div class="row">
+                        @Html.Label(day)
+                    </div>
+                    <div class="row">
+                        @Html.Label(date.ToString())
+                    </div>
+                </div>
+                <div class="panel panel-default col-md-7">
+                    <div class="row">
+                        @Html.Label(ev.Title)
+                    </div>
+                    <div class="row">
+                        @Html.Label(ev.EventOwner)
+                    </div>
+                    <div class="row">
+                        @Html.Label(ev.ClubName)
+                    </div>
+                </div>
+            </a>
+        }
+    }
+    <ul class="pagination text-center">
+        @if (Model.CurrentPage > 1)
+            {
+            <li>
+                @Html.ActionLink("Previous", "Index", "Home", new { page = (Model.CurrentPage - 1) }, null)
+            </li>
+        }
+        @for (int i = 1; i < Model.TotalPages; i++)
+            {
+                var className = string.Empty;
+                if (Model.CurrentPage == i)
+                {
+                    className = "active";
+                }
+                <li class="@className">
+                    @Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)
+                </li>
+        }
+        @if (Model.CurrentPage < Model.TotalPages)
+            {
+            <li>
+                @Html.ActionLink("Next", "Index", "Home", new { page = (Model.CurrentPage + 1) }, null)
+            </li>
+        }
+    </ul>
+</div>

@@ -70,7 +70,7 @@
     <Compile Include="ImageService.cs" />
     <Compile Include="Interfaces\IClubAnonymousReviewService.cs" />
     <Compile Include="Interfaces\IClubHiddenImageService.cs" />
-    <Compile Include="Interfaces\IClubHiddenImageVote.cs" />
+    <Compile Include="Interfaces\IClubHiddenImageVoteService.cs" />
     <Compile Include="Interfaces\IClubReviewService.cs" />
     <Compile Include="Interfaces\IClubService.cs" />
     <Compile Include="Interfaces\IEventCommentService.cs" />

@@ -5,7 +5,7 @@
     using System.Linq;
     using Models;
 
-    public class DeletableEntityRepository<T> : EfGenericRepository<T>, IDeletableEntityRepository<T>
+    public class DeletableEntityRepository<T> : GenericRepository<T>, IDeletableEntityRepository<T>
         where T : class, IDeletableEntity
     {
         public DeletableEntityRepository(DbContext context)

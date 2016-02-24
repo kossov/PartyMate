@@ -5,9 +5,11 @@
 
     public interface IApplicationDbContext
     {
-        DbSet<TEntity> Set<TEntity>() where TEntity : class;
+        DbSet<TEntity> Set<TEntity>()
+            where TEntity : class;
 
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)
+            where TEntity : class;
 
         void Dispose();
 
